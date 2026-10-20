@@ -1,0 +1,30 @@
+{
+    "name": "pixiibomb/ui",
+    "description": "The PixiiBomb.UI package",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Pixii",
+            "email": "pixiibomb@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "pixiibomb/core": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "PixiiBomb\\Ui\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PixiiBomb\\Ui\\PixiiBombUiServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

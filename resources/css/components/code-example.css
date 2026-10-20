@@ -1,0 +1,89 @@
+.code-example {
+    --code-example-preview-bg: var(--color-bg-primary);
+    --code-example-source-bg: var(--color-bg-secondary);
+    --code-example-header-bg: var(--color-bg-variant);
+    --code-example-border-color: var(--color-border-primary);
+    --code-example-code-color: var(--color-text-primary);
+    --code-example-label-color: var(--color-text-muted);
+
+    overflow: hidden;
+    background: var(--code-example-preview-bg);
+    border: var(--border-xs) solid var(--code-example-border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.code-example-preview {
+    display: flex;
+    min-height: 10rem;
+    align-items: center;
+    justify-content: center;
+    gap: var(--padding-md);
+    padding: var(--padding-xl);
+
+    background: var(--code-example-preview-bg);
+}
+
+.code-example-source {
+    overflow: hidden;
+    background: var(--code-example-source-bg);
+    border-top: var(--border-xs) solid var(--code-example-border-color);
+}
+
+.code-example-source-header {
+    display: flex;
+    min-height: 2.5rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-sm) var(--padding-lg);
+
+    color: var(--code-example-label-color);
+    background: var(--code-example-header-bg);
+    border-bottom: var(--border-xs) solid var(--code-example-border-color);
+
+    font-size: var(--font-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.code-example-source pre {
+    max-width: 100%;
+    margin: 0;
+    padding: var(--padding-lg);
+    overflow: auto;
+
+    color: var(--code-example-code-color);
+    background: var(--code-example-source-bg);
+
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        "Courier New",
+        monospace;
+    font-size: var(--font-sm);
+    line-height: 1.6;
+    tab-size: 4;
+}
+
+.code-example-source code {
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    white-space: pre;
+}
+
+@media (max-width: 576px) {
+    .code-example-preview {
+        min-height: 8rem;
+        padding: var(--padding-lg);
+    }
+
+    .code-example-source pre {
+        padding: var(--padding-md);
+    }
+}

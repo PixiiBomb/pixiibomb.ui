@@ -1,0 +1,375 @@
+.banner-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: flex-start;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.feature-gradient-bg {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    perspective: 700px;
+    perspective-origin: 50% 35%;
+    padding: 0;
+    min-height: 100vh;
+    background: radial-gradient(
+        ellipse at 22% 70%,
+        color-mix(in srgb, var(--color-primary) 45%, transparent),
+        transparent 55%
+    ),
+    radial-gradient(
+        ellipse at 58% 45%,
+        color-mix(in srgb, var(--color-secondary) 35%, transparent),
+        transparent 50%
+    ),
+    radial-gradient(
+        ellipse at 88% 55%,
+        color-mix(in srgb, var(--color-accent) 30%, transparent),
+        transparent 60%
+    ),
+    linear-gradient(
+        120deg,
+        var(--color-bg-primary) 0%,
+        var(--color-bg-secondary) 45%,
+        var(--color-bg-primary) 100%
+    );
+}
+
+.particle-item {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--color-primary) 90%, white) 0%,
+        var(--color-primary) 45%,
+        transparent 75%
+    );
+    box-shadow:
+        0 0 18px color-mix(in srgb, var(--color-primary) 80%, transparent),
+        0 0 42px color-mix(in srgb, var(--color-primary) 45%, transparent),
+        0 0 80px color-mix(in srgb, var(--color-primary) 25%, transparent);
+    filter: blur(1px);
+}
+
+.particle-item.alternate {
+    background: radial-gradient(
+        circle,
+        color-mix(in srgb, var(--color-bg-primary) 90%, white) 0%,
+        var(--color-primary) 45%,
+        transparent 75%
+    );
+}
+
+#halo-foreground {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.feature-content {
+    position: relative;
+    z-index: 1;
+}
+
+.pixii-orb-card {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    margin-bottom: var(--padding-xl);
+}
+
+.pixii-icon-tile {
+    position: relative;
+    display: grid;
+    place-items: center;
+
+    width: clamp(var(--icon-lg), 12vw, var(--icon-xl));
+    height: clamp(var(--icon-lg), 12vw, var(--icon-xl));
+
+    border-radius: var(--radius-lg);
+    border: var(--border-sm) solid color-mix(in srgb, var(--color-border-primary) 55%, transparent);
+
+    background: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--color-bg-secondary) 80%, white 6%),
+        color-mix(in srgb, var(--color-bg-primary) 92%, black 8%)
+    );
+
+    box-shadow: inset 0 1px 0 color-mix(in srgb, white 22%, transparent),
+    inset 0 -18px 40px color-mix(in srgb, var(--color-bg-primary) 55%, transparent),
+    0 0 0 8px color-mix(in srgb, var(--color-primary) 6%, transparent),
+    0 18px 45px color-mix(in srgb, black 38%, transparent),
+    0 0 55px color-mix(in srgb, var(--color-primary) 28%, transparent),
+    0 0 100px color-mix(in srgb, var(--color-secondary) 18%, transparent);
+
+    overflow: hidden;
+    backdrop-filter: blur(var(--blur-md));
+    animation: tile-float 7s ease-in-out infinite;
+}
+
+.pixii-icon-tile::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        color-mix(in srgb, var(--color-primary) 35%, transparent),
+        transparent,
+        color-mix(in srgb, var(--color-accent) 25%, transparent),
+        transparent
+    );
+    opacity: 0.55;
+    animation: halo-spin 12s linear infinite;
+}
+
+.pixii-icon-tile::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background: linear-gradient(
+        115deg,
+        transparent 35%,
+        color-mix(in srgb, white 34%, transparent) 48%,
+        color-mix(in srgb, var(--color-secondary) 42%, transparent) 50%,
+        transparent 65%
+    );
+    transform: translateX(-130%) rotate(8deg);
+    animation: lens-sweep 5.5s ease-in-out infinite;
+}
+
+.pixii-icon {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.6rem, 6vw, 4.75rem);
+    filter: drop-shadow(0 0 12px color-mix(in srgb, var(--color-primary) 55%, transparent)) drop-shadow(0 0 26px color-mix(in srgb, var(--color-secondary) 38%, transparent));
+    animation: icon-pulse 3.5s ease-in-out infinite;
+}
+
+.package-details-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 100%;
+    align-items: center;
+    gap: var(--padding);
+}
+
+.package-icon {
+    --icon-size: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    border-radius: var(--icon-size);
+    background: var(--color-bg-primary);
+}
+
+.package-icon span {
+    position: absolute;
+    font-size: var(--icon-lg);
+}
+
+.package-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.package-details span {
+    font-size: var(--font-sm);
+    color: var(--color-primary-20);
+}
+
+#banner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background-color: var(--color-primary);
+    -webkit-mask: url("../../images/banner-v1.png") no-repeat center;
+    -webkit-mask-size: cover;
+    mask: url("../../images/banner-v1.png") no-repeat center;
+    mask-size: cover;
+}
+
+body[data-theme="midnight-ink"] #banner,
+body[data-theme="midnight-ledger"] #banner,
+body[data-theme="void-chrome"] #banner,
+body[data-theme="moonmoth"] #banner {
+    background-color: var(--color-bg-primary);
+}
+
+.package-install-container {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-primary);
+}
+
+body[data-theme="midnight-ink"] .package-install-container,
+body[data-theme="midnight-ledger"] .package-install-container,
+body[data-theme="void-chrome"] .package-install-container,
+body[data-theme="moonmoth"] .package-install-container {
+    background-color: var(--color-bg-primary);
+}
+
+.binary-column {
+    --binary-font-size: var(--font-md);
+    --binary-duration: 12s;
+    --binary-delay: 0s;
+
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15em;
+    color: var(--color-primary);
+    font-family: monospace;
+    font-size: var(--binary-font-size);
+    line-height: 1;
+    animation: binary-fall var(--binary-duration) linear infinite;
+    animation-delay: var(--binary-delay);
+    will-change: transform;
+}
+
+.binary-column.secondary {
+    color: var(--color-secondary);
+}
+
+.binary-column.accent {
+    color: var(--color-accent);
+}
+
+.binary-digit {
+    display: block;
+    color: inherit;
+    text-shadow: 0 0 8px currentColor;
+}
+
+.feature-gradient-bg {
+    isolation: isolate;
+}
+
+.rain,
+.particle {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+}
+
+/*
+ * Layer order:
+ *
+ * 0: background rain
+ * 1: background particles
+ * 2: banner silhouette
+ * 3: page content
+ * 4: foreground particles
+ * 5: foreground rain
+ */
+
+.rain.background {
+    z-index: 0;
+    opacity: 0.55;
+}
+
+.particle.background {
+    z-index: 1;
+}
+
+#banner {
+    z-index: 2;
+}
+
+.feature-content {
+    position: relative;
+    z-index: 3;
+}
+
+.particle.foreground {
+    z-index: 4;
+}
+
+.rain.foreground {
+    z-index: 5;
+    opacity: 0.8;
+}
+
+@keyframes binary-fall {
+    from {
+        transform: translate3d(0, calc(-100% - 10vh), 0);
+    }
+
+    to {
+        transform: translate3d(0, 110vh, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .binary-column {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes tile-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(0.75deg);
+    }
+}
+
+@keyframes halo-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes lens-sweep {
+    0%, 30% {
+        transform: translateX(-130%) rotate(8deg);
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    70%, 100% {
+        transform: translateX(130%) rotate(8deg);
+        opacity: 0;
+    }
+}
+
+@keyframes icon-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.95;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1000px) {
+    .package-details-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .package-details {
+        text-align: center;
+    }
+}

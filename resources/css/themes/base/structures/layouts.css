@@ -1,0 +1,26 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100%;
+}
+
+/* UI LAYOUT */
+body[data-layout="ui-layout"] main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body[data-layout="ui-layout"] .content-container {
+    flex: 1 1 auto;
+    min-height: 100vh;
+}
+
+body[data-layout="ui-layout"] main,
+body[data-layout="ui-layout"] .content-container {
+    background: transparent;
+}
